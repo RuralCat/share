@@ -79,7 +79,8 @@ def plot_ema(code):
 
 url = 'http:/vip.stock.finance.sina.com.cn/corp/go.php/vMS_FuQuanMarketHistory/stockid/601990.phtml?year=2018&jidu=3'
 if __name__ == '__main__':
-    show_current_market()
+    d = ts.get_day_all('2018-07-26')
+    print(d)
 
 
 
