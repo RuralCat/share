@@ -43,7 +43,7 @@ def ema(data, n=24, val_name="close"):
 def show_current_market():
     # a = ts.get_today_all()
     stf = lambda v: float(v)
-    codes = ['601990', '601330', '603348', '300058']
+    codes = ['300601', '603348', '300722', '002400']
     while True:
         for code in codes:
             s1 = ts.get_realtime_quotes(code)
@@ -77,10 +77,24 @@ def plot_ema(code):
     plt.plot(d_ema)
     plt.show()
 
+def dump_data(data, name):
+    with open('data/{}.pic'.format(name), 'wb') as f:
+        pickle.dump(data, f)
+
+def load_data(name):
+    with open('data/{}.pic'.format(name), 'rb') as f:
+        return pickle.load(f)
+
 url = 'http:/vip.stock.finance.sina.com.cn/corp/go.php/vMS_FuQuanMarketHistory/stockid/601990.phtml?year=2018&jidu=3'
 if __name__ == '__main__':
-    d = ts.get_day_all('2018-07-26')
-    print(d)
+    # d = ts.get_day_all('2018-07-26')
+    # print(d)
+    # show_current_market()
+    code_list = load_data('code_list')
+    # for code in code_list:
+    #     data = ts.get_k_data(code)
+    data = ts.get_k_data('601990')
+    print(data)
 
 
 
